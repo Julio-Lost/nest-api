@@ -11,6 +11,19 @@ export class UserService {
     private userRepository: Repository<User>,
   ) {}
 
+  async findAllUser(): Promise<User[]> {
+    const users = await this.userRepository.find();
+
+    const userFindEmpty = !users;
+
+    if (userFindEmpty) {
+      throw new InternalServerErrorException(
+        'Não foi possivel buscar os usuarios.',
+      );
+    }
+    return users;
+  }
+
   async createUser(data: CreateUserInput): Promise<User> {
     const user = await this.userRepository.create(data);
     const userSaved = await this.userRepository.save(user);

@@ -2,7 +2,7 @@
     "type": "postgres",
     "host": "localhost",
     "port": 5432,
-    "username": "sa",
+    "username": "postgres",
     "password": "somePassword",
     "database": "nest_api",
     "entities": ["dist/**/*.entity{.ts,.js}"],
