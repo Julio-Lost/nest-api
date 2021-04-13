@@ -1,4 +1,8 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import {
+  Injectable,
+  InternalServerErrorException,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateUserInput } from './dto/create-user.input';
@@ -17,11 +21,22 @@ export class UserService {
     const userFindEmpty = !users;
 
     if (userFindEmpty) {
-      throw new InternalServerErrorException(
-        'Não foi possivel buscar os usuarios.',
-      );
+      throw new NotFoundException('Nenhum usuario encontrado.');
     }
+
     return users;
+  }
+
+  async findUserById(id: string): Promise<User> {
+    const user = await this.userRepository.findOne(id);
+
+    const userEmpty = !user;
+
+    if (userEmpty) {
+      throw new NotFoundException('Não foi encontrado usuario com esse id.');
+    }
+
+    return user;
   }
 
   async createUser(data: CreateUserInput): Promise<User> {
