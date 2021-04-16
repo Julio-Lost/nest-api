@@ -8,6 +8,7 @@ services:
       - '3000:3000'
     volumes:
       - .:/home/api
+      - /home/api/node_modules
 
   database:
     container_name: nest-postgres-db
