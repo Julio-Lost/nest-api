@@ -1,0 +1,20 @@
+version: '2.0'
+
+services:
+  api:
+    container_name: nest-api
+    build: .
+    ports:
+      - '3000:3000'
+    volumes:
+      - .:/home/api
+
+  database:
+    container_name: nest-postgres-db
+    image: postgres:13
+    environment:
+      POSTGRES_DB: nest_api
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: somePassword
+    ports:
+      - '5432:5432'
