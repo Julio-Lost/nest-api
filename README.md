@@ -64,7 +64,7 @@ If you decide to use the docker, you should follow these steps:
 
 - have the docker installed.
 
-- change to the docker branch
+- change to the `feature/docker` branch
 
 - If you do not have the node installed on your machine. He copied the node_modules from the docker to the host machine (Remembering that this copy must be made, whenever there is a change):
 
