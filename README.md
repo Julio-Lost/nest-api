@@ -58,6 +58,30 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## Docker
+
+If you decide to use the docker, you should follow these steps:
+
+- have the docker installed.
+
+- If you do not have the node installed on your machine. He copied the node_modules from the docker to the host machine (Remembering that this copy must be made, whenever there is a change):
+
+```bash
+# docker cp nest_api:/home/api/node_modules/. ./node_modules
+```
+
+- To use the docker for run the application, use the command:
+
+```bash
+# docker-compose up
+```
+
+- To install dependencies using node_modules from within the docker or create a nest module:
+
+```bash
+# docker-compose exec api nom install packageName  
+```
+
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
